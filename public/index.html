@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FORM PRACTICE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+  <div class="main-area">
+    <h1>FORM PRACTICE</h1>
+    <form id="add-item" action="/items" method="POST">
+      <label for="image">
+        <p>Upload an Image</p>
+        <input type="file" name="image" id="image" accept="image/*" required>
+      </label>
+
+      <label for="title">
+        <p>Add a Title & Description</p>
+        <input type="text" name="title" id="title" placeholder="Title" required>
+        <input type="textarea" name="description" placeholder="Description" id="description" required>
+      </label>
+
+      <label for="tags">
+        <p>Choose Some Tags</p>
+        <select name="tags" id="tags" multiple required>
+          <option value="Household Items">Household Items</option>
+          <option value="Recreational Equipment">Recreational Equipment</option>
+          <option value="Tools">Tools</option>
+          <option value="Electronics">Electronics</option>
+        </select>
+      </label>
+      <button type="submit" id="submit">Add the Item!</button>
+    </form>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
