@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
+  <title>LOGIN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 
 <body>
-  <form id="add-item" action="/items" method="POST">
+  <form id="login-form" class="main-area" action="/authenticate" method="POST">
 
     <label for="username">
       <p>Username:</p>
@@ -23,6 +23,8 @@
     </label>
     <button type="submit" id="submit">Add the Item!</button>
   </form>
+
+  <script src="login.js"></script>
 </body>
 
 </html>
