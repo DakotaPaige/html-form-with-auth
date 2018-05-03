@@ -1,5 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import session from 'express-session';
+import parseurl from 'parseurl';
 
 const app = express();
 const port = 4000;
@@ -13,27 +15,52 @@ app.use(express.static('public'));
 // set up our /items route handlers
 app.use('/items', router);
 
+app.use(
+    session({
+        secret: 'board katkey',
+        resave: true,
+        saveUninitialized: false,
+        cookie: { secure: false }
+    })
+);
+
 const auth = (req, res, next) => {
-    function unauthorized(res) {
-        res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-        res.sendStatus(401);
-    }
-
-    let authHeader = (req.headers.authorization || '').split(' ')[1] || '';
-    const [login, password] = new Buffer(authHeader, 'base64')
-        .toString()
-        .split(':');
-
-    if (login === 'cat' && password === 'cat') {
-        next();
+    if (false) {
+        // inspect the session cookie and determine if we're authorized
     } else {
-        return unauthorized(res);
+        res.status(401).redirect('/login');
     }
 };
 
 app.get('/', auth, (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
+
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/login.html');
+});
+// BASIC HTTP AUTHETICATION
+// const auth = (req, res, next) => {
+//     function unauthorized(res) {
+//         res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+//         res.sendStatus(401);
+//     }
+
+//     let authHeader = (req.headers.authorization || '').split(' ')[1] || '';
+//     const [login, password] = new Buffer(authHeader, 'base64')
+//         .toString()
+//         .split(':');
+
+//     if (login === 'cat' && password === 'cat') {
+//         next();
+//     } else {
+//         return unauthorized(res);
+//     }
+// };
+
+// app.get('/', auth, (req, res) => {
+//     res.sendFile(__dirname + '/index.html');
+// });
 
 router
     .route('/items')

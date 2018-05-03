@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+  <form id="add-item" action="/items" method="POST">
+
+    <label for="username">
+      <p>Username:</p>
+      <input type="text" name="username" id="username" placeholder="Username" required>
+    </label>
+
+    <label for="password">
+      <p>Password: </p>
+      <input type="password" name="password" id="password" placeholder="Username" required>
+    </label>
+    <button type="submit" id="submit">Add the Item!</button>
+  </form>
+</body>
+
+</html>
